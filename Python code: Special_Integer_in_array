@@ -1,0 +1,36 @@
+Qs:Given an array of integers A and an integer B, find and return the maximum value K such that there is no subarray in A of size K with the sum of elements greater than B.
+Approach i used:
+"Sliding Window" + "Binary Search" 
+Python Code:
+def slidingwindow(self,Arr,win_size,k):
+      cur_sum=0
+      for i in range(win_size):
+        cur_sum+=Arr[i]
+        # main condition sum of subarray shouldn't exceed B
+        if cur_sum>k:
+           return False
+      
+      for j in range(len(Arr)-win_size):
+          cur_sum-=A[j]
+          cur_sum+=A[j+win_size]
+          
+          if cur_sum>k:
+             return False
+      return True
+def Binarysearch(self,Arr,k):
+     s,e=0,len(Arr)
+     ans=0
+     while s<=e:
+       mid=(s+e)//2
+       if self.slidingwindow(Arr,mid,k):
+          ans=mid
+          s=mid+1
+       else:
+          e=mid-1
+     return ans
+def solve(self,A,B):
+    res= self.Binarysearch(A,B)
+    return res
+            
+     
+      
